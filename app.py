@@ -5,9 +5,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+hf_token = Design.secrets["HUGGINGFACEHUB_API_TOKEN"]
+
 llm = HuggingFaceEndpoint(
     repo_id="mistralai/Mistral-7B-Instruct-v0.2",
-    task="conversational"
+    task="conversational",
+    huggingfacehub_api_token=hf_token,
 )
 
 model = ChatHuggingFace(llm=llm)
