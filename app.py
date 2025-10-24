@@ -2,10 +2,12 @@ from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
 from langchain_core.prompts import PromptTemplate
 import streamlit as Design
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
-hf_token = Design.secrets["HUGGINGFACEHUB_API_TOKEN"]
+hf_token = Design.secrets.get("HUGGINGFACEHUB_API_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
 
 llm = HuggingFaceEndpoint(
     repo_id="mistralai/Mistral-7B-Instruct-v0.2",
